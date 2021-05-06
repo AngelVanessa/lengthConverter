@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Length Converter</h1>
+        <input type="number" id="inputNumber" placeholder="Input Number" oninput="lengthConverter(this.value)">
+
+        <select id="length">
+            <option value="centimeters">centimeters</option>
+            <option value="meter">meter</option>
+            <option value="kilometers">kilometers</option>
+        </select> 
+
+        <h3>Centimeters  : <span id="outputcentimeters"></span></h3> 
+        <h3>Meter        : <span id="outputmeter"></span></h3> 
+        <h3>Kilometers   : <span id="outputkilometers"></span></h3> 
+    </div>
+
+    <script>
+        function lengthConverter(valuemeter){
+            var length = document.getElementById('length').value;
+            if(length == "centimeters") {
+                var input = document.getElementById("inputNumber").value;
+                var centimeters = parseFloat(input);
+                var meter = centimeters/100;
+                var kilometers = centimeters/100000;
+            }
+            else if(length == "meter") {
+                var input = document.getElementById("inputNumber").value;
+                var meter = parseFloat(input);
+                var centimeters = meter*100;
+                var kilometers = meter/1000; 
+            }
+            else if(length == "kilometers") {
+                var input = document.getElementById("inputNumber").value;
+                var kilometers = parseFloat(input);
+                var centimeters = kilometers*100000;
+                var meter = kilometers*1000;
+            }
+
+            document.getElementById("outputcentimeters").innerHTML = "";
+            document.getElementById("outputcentimeters").innerHTML +=centimeters +" centimeters";
+
+            document.getElementById("outputmeter").innerHTML = "";
+            document.getElementById("outputmeter").innerHTML +=meter +" meter";
+
+            document.getElementById("outputkilometers").innerHTML = "";
+            document.getElementById("outputkilometers").innerHTML +=kilometers +" kilometers";
+        }
+    </script>
+</body>
+</html>
